@@ -1,0 +1,1 @@
+{"name":"m-t609-v1-kpi-dashboard","private":true,"scripts":{"build":"node -e \"console.log('seed dashboard build')\"","test":"node --test"},"engines":{"node":">=20"}}
