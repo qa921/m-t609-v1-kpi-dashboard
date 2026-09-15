@@ -1,4 +1,9 @@
+import { stateLabel, provenanceText } from './kpiProvenance.js';
+
 export function RegionKpiDetail(model, region) {
-  return `<article><h1>${region} Active Accounts</h1><output>${model.value ?? 'Unavailable'}</output><small title="${model.observedAt || ''}">Current</small></article>`;
+  const value = model?.value ?? 'Unavailable';
+  const state = model?.state ?? 'unavailable';
+  // Same adjacent provenance as the overview card: state badge, snapshot id or
+  // live source, observation date, and staleness next to the number.
+  return `<article><h1>${region} Active Accounts</h1><p class="kpi-line"><output>${value}</output> <span class="state-badge state-${state}">${stateLabel(model)}</span> <span class="kpi-provenance">${provenanceText(model)}</span></p></article>`;
 }
-// Existing detail page hides provenance in title text and labels every response Current.
